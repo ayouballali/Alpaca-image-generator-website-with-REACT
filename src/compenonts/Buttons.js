@@ -12,7 +12,10 @@ function Buttons() {
     "short",
   ]);
   const [clickedAcces,setClickedAcces] =  useState("haire")
-  const [clickedStyle,setClickedStyle] =  useState("haire")
+
+    // create table here to manage the clecked buttons instead of just a variable 
+  const [clickedStyle,setClickedStyle] =  useState("Default")
+
 
   const showAccesories = Object.keys(buttons).map((key, index) => {
     console.log(key);
