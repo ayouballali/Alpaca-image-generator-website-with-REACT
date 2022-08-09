@@ -1,7 +1,7 @@
 import { buttons } from "../cnonfiguration";
 import React, { useState } from "react";
 
-function Buttons() {
+function Buttons(props) {
   const [style, setStyle] = useState([
     "Default",
     "bang",
@@ -13,18 +13,9 @@ function Buttons() {
   ]);
   const [clickedAcces,setClickedAcces] =  useState("haire")
 
-    // create table here to manage the clecked buttons instead of just a variable 
-  const [clickedStyle,setClickedStyle] =  useState({
-    haire: "Default", 
-    ears: "Default", 
-    eyes: "Default", 
-    mouth: "Default",  
-    neck: "Default",   
-    leg: "Default",
-    accessories: "Default",
-    backgrounds: "Default"
-      
-  })
+    // get state from props 
+const clickedStyle = props.clickedStyles.clickedStyle;
+const setClickedStyle = props.clickedStyles.setClickedStyle
 
 
   const showAccesories = Object.keys(buttons).map((key, index) => {
@@ -62,12 +53,14 @@ function Buttons() {
 
   function handelclickStyle(key) {
     
+    // there was a problem called async opration but i solved it by this prevState ...
+
     setClickedStyle(prevState => {
-      let clickedStyles = Object.assign({}, prevState);  // creating copy of state variable jasper
-      clickedStyles[clickedAcces] = key;                     // update the name property, assign a new value                 
-      return  clickedStyles ;                                 // return new object jasper object
+      let clickedStyles = Object.assign({}, prevState);  
+      clickedStyles[clickedAcces] = key;                              
+      return  clickedStyles ;                                 
     })
-    console.log(clickedStyle);
+   
   }
 
   return (

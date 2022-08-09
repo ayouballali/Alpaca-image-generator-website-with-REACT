@@ -78,6 +78,7 @@ body {
 .img{
   width: 350px;
   height: 410px;
+  position: absolute;
 }
 
 
@@ -101,3 +102,32 @@ body {
     width: 400px;
 }
 }
+
+.haire{
+  z-index: 18;
+} 
+.ears{
+  z-index: 3;
+} 
+.eyes{
+  z-index:20 ;
+} 
+.mouth{
+  z-index: 17;
+}  
+.neck{
+  z-index: 6;
+}   
+.leg{
+  z-index: 15;
+}
+.accessories{
+  z-index:20 ;
+}
+.backgrounds{
+  z-index: 1;
+}
+.nose{
+  z-index: 11;
+}
+
