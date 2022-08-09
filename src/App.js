@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { buttons } from './cnonfiguration';
 import Buttons from './compenonts/Buttons';
 import Image from './compenonts/Image';
 
@@ -17,13 +18,27 @@ function App() {
       
   })
 
+
+  function handelClickRand (){
+
+    setClickedStyle(prevState => {
+      let clickedStyles = Object.assign({}, prevState);  
+
+      Object.keys(buttons).forEach((key)=>{
+        clickedStyles[key] =buttons[key][Math.floor(Math.random() * buttons[key].length)]
+      }) 
+     
+                                  
+      return  clickedStyles ;                                 
+    })
+    
+  }
+
   const clickedStyles = {clickedStyle,setClickedStyle}
   return (
     <div className="container">
-    <Image clickedStyles = {clickedStyles} />
-    <Buttons clickedStyles = {clickedStyles}/>
-   
-    
+    <Image handelClik={handelClickRand} clickedStyles = {clickedStyles} />
+    <Buttons clickedStyles = {clickedStyles}/>    
     </div>
   );
 }
