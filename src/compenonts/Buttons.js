@@ -14,11 +14,20 @@ function Buttons() {
   const [clickedAcces,setClickedAcces] =  useState("haire")
 
     // create table here to manage the clecked buttons instead of just a variable 
-  const [clickedStyle,setClickedStyle] =  useState("Default")
+  const [clickedStyle,setClickedStyle] =  useState({
+    haire: "Default", 
+    ears: "Default", 
+    eyes: "Default", 
+    mouth: "Default",  
+    neck: "Default",   
+    leg: "Default",
+    accessories: "Default",
+    backgrounds: "Default"
+      
+  })
 
 
   const showAccesories = Object.keys(buttons).map((key, index) => {
-    console.log(key);
     var className = key===clickedAcces ? "btn btn-accessorize accessorize__active" : "btn btn-accessorize "
     return (
       <button
@@ -32,13 +41,14 @@ function Buttons() {
   });
 
   const showStyles = style.map((key, index) => {
-    var className = key===clickedStyle ? "btn  btn__style__active" : "btn "
+   
+    var className1 = key===clickedStyle[clickedAcces] ? "btn  btn__style__active" : "btn "
 
     return (
       <button
         key={index}
         onClick={() => handelclickStyle(key)}
-        className={className}
+        className={className1}
       >
         {key}
       </button>
@@ -51,7 +61,13 @@ function Buttons() {
   }
 
   function handelclickStyle(key) {
-    setClickedStyle(key)
+    
+    setClickedStyle(prevState => {
+      let clickedStyles = Object.assign({}, prevState);  // creating copy of state variable jasper
+      clickedStyles[clickedAcces] = key;                     // update the name property, assign a new value                 
+      return  clickedStyles ;                                 // return new object jasper object
+    })
+    console.log(clickedStyle);
   }
 
   return (
